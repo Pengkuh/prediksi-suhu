@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Prediksi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            padding: 50px;
+            margin-top: 40px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #4e73df;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        h1:hover {
+            color: #3a56b7;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #6c757d;
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th {
+            background-color: #4e73df;
+            color: white;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f3f5;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #777;
+            padding: 20px 0;
+            background-color: #f4f7fc;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4e73df;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .back-to-top:hover {
+            background-color: #3a56b7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hasil Prediksi</h1>
+
+        <div class="results-section">
+            <div class="card">
+                <h2>Grafik Prediksi</h2>
+                <img src="data:image/png;base64,{{ plot_url }}" alt="Grafik Prediksi">
+            </div>
+            <div class="card">
+                <h2>Hasil Prediksi untuk 30 Hari ke Depan</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        {{ tables|safe }}
+                    </table>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="/" class="btn btn-secondary">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Aplikasi Prediksi Suhu. Semua Hak Dilindungi.
+    </div>
+
+    <div class="back-to-top" onclick="window.scrollTo(0, 0)">
+        ↑
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

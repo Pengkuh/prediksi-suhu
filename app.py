@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')  # Use non-GUI backend

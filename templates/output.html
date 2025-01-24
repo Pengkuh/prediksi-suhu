@@ -5,68 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hasil Prediksi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link ke Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- Link ke Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #f9f9f9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            font-family: 'Roboto Mono', monospace;
             color: #333;
             line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1000px;
-            padding: 50px;
-            margin-top: 40px;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            color: #4e73df;
-            font-weight: 800;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-
-        h1:hover {
-            color: #3a56b7;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            color: #6c757d;
-            text-align: center;
-            font-weight: 500;
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
         }
 
         .card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
-        .card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        .bg-primary {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white !important;
         }
 
-        .table {
-            background-color: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        .btn-primary {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+
+        h1 {
+            font-family: 'Roboto Mono', monospace;
+            color: #333;
+        }
+
+        h2 {
+            font-family: 'Roboto Mono', monospace;
+            color: white;
         }
 
         .table th {
-            background-color: #4e73df;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
         }
 
@@ -76,64 +64,70 @@
 
         .footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 20px;
             font-size: 0.9rem;
             color: #777;
             padding: 20px 0;
             background-color: #f4f7fc;
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #4e73df;
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
 
-        .back-to-top:hover {
-            background-color: #3a56b7;
+            .card {
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Hasil Prediksi</h1>
+        <h1 class="text-center mb-4">Hasil Prediksi</h1>
 
         <div class="results-section">
-            <div class="card">
-                <h2>Grafik Prediksi</h2>
-                <img src="data:image/png;base64,{{ plot_url }}" alt="Grafik Prediksi">
+            <div class="card mb-4">
+                <div class="card-header text-center bg-primary">
+                    <h2>Grafik Prediksi</h2>
+                </div>
+                <div class="card-body text-center">
+                    <img src="data:image/png;base64,{{ plot_url }}" alt="Grafik Prediksi" class="img-fluid">
+                </div>
             </div>
-            <div class="card">
-                <h2>Hasil Prediksi untuk 30 Hari ke Depan</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        {{ tables|safe }}
-                    </table>
+            <div class="card mb-4">
+                <div class="card-header text-center bg-primary">
+                    <h2>Hasil Prediksi untuk 30 Hari ke Depan</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            {{ tables|safe }}
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="/" class="btn btn-secondary">Kembali ke Beranda</a>
+                <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
             </div>
         </div>
     </div>
 
-    <div class="footer">
-        &copy; 2025 Aplikasi Prediksi Suhu. Semua Hak Dilindungi.
-    </div>
-
-    <div class="back-to-top" onclick="window.scrollTo(0, 0)">
-        ↑
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
